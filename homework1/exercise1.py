@@ -11,6 +11,7 @@ def collatz_step(n):
     n : int
 
     Returns
+    Testing whether git will work with SMC
     -------
     int
         The result of C(n).
