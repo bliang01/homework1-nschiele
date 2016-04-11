@@ -1,4 +1,4 @@
-# the documenation has been written for you in this exercise
+# the documenation has been written for you in this  exercise
 
 def collatz_step(n):
     """Returns the result of the Collatz function.
@@ -17,9 +17,16 @@ def collatz_step(n):
         The result of C(n).
 
     """
-    pass
+    if n < 0:
+        raise ValueError('Negative Values not allowed for Collatz')
+    if n == 1:
+        return 1
+    if n % 2 == 0:
+        return n/2
+    return 3*n + 1
 
-def collatz(n):
+
+def collatz(n):    
     """Returns the Collatz sequence beginning with `n`.
 
     It is conjectured that Collatz sequences all end with `1`. Calls
@@ -35,4 +42,8 @@ def collatz(n):
         A Collatz sequence.
 
     """
-    pass
+    cList = [n]
+    while(n > 1):
+        n = collatz_step(cList[-1])
+        cList.append(n)
+    return cList
