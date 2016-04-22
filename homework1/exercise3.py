@@ -86,12 +86,10 @@ def jacobi_iteration(A, b, x0, epsilon=1e-8):
     D, L, U = decompose(A)
     xk = x0
     xk1 = jacobi_step(D, L, U, b, xk)
-    print type(xk), type(xk1)
 
     while norm(xk1 - xk, 2) > epsilon:
         xk = xk1
         xk1 = jacobi_step(D, L, U, b, xk)
-        print norm(xk1 - xk, 2)
     return xk1
 
 def gauss_seidel_step(D, L, U, b, xk):
@@ -138,9 +136,7 @@ def gauss_seidel_iteration(A, b, x0, epsilon=1e-8):
     D, L, U = decompose(A)
     xk = x0
     xk1 = gauss_seidel_step(D, L, U, b, xk)
-    print type(xk), type(xk1)
     while norm(xk1 - xk, 2) > epsilon:
         xk = xk1
         xk1 = gauss_seidel_step(D, L, U, b, xk)
-        print norm(xk1 - xk, 2)
     return xk1
