@@ -36,9 +36,19 @@ def gradient_descent(f, df, x, sigma=0.5, epsilon=1e-8):
     float
         The local min of f
     """
+
+
+
+
+    # Raise ValueError if Sigma isn't in (0,1)
     if sigma <= 0 or sigma >= 1:
         raise ValueError('Negative Values not allowed for Collatz')
 
+    # df(x) = 0 but f(x) not a minimum
+    if df(x) == 0 and f(x+sigma) < f(x):
+        x = x+sigma
+    elif df(x) == 0 and f(x-sigma) < f(x):
+        x = x-sigma
     xk = x+1;
     xk1 = x
     while abs(xk1 - xk) > epsilon:
